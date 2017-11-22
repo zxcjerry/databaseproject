@@ -6,7 +6,6 @@
  * Time: 5:41 PM
  */
     include('login.php');
-    include('config.php');
 ?>
 
 <html>
