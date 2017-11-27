@@ -11,5 +11,3 @@
         echo "Cannot configures mysql database";
         die();
     }
-
-?>

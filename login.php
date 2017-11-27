@@ -15,21 +15,29 @@ if(mysqli_connect_errno()){
 
     if(isset($_SESSION['user']))
     {
-        echo "Hello ";
-        echo $_SESSION['user'];
-        echo "<a href='logout.php'> Logout </a>";
+        $uname = $_SESSION['user'];
+        echo "<p align='center'> <color=blue  size='6pt'>Hello $uname <a href='logout.php'> Logout </a> </p>";
+//        echo "Hello ";
+//        echo $_SESSION['user'];
+//        echo "<a href='logout.php'> Logout </a>";
     }
     else{ ?>
         <html>
 
+        <style type="text/css">
+            <!--
+            .STYLE4 {font-size: 15px}
+            -->
+        </style>
+
         <body>
 
         <form action="" method="post">
-            <table width="200" border="0">
+            <table width="799" height="50" border="0" align="center" cellpadding="0" cellspacing="0" class="bk">
                 <tr>
-                    <td> Username</td>
+                    <td width="350" align="center"><span class="STYLE4"> Username</td>
                     <td> <input type="text" name="user"  title="username"></td>
-                    <td> Password</td>
+                    <td width="350" align="center"><span class="STYLE4"> Password</td>
                     <td> <input type="password" name="pass" title="password"></td>
                     <td> <input type="submit" name="login"  value="Login"></td>
                     <td> <input type="submit" name="reg"  value="Register"></td>

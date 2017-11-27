@@ -21,7 +21,10 @@ if(mysqli_connect_errno()){
     <html>
     <title> Register </title>
     <form action="" method="post">
-    <table width = "600" border = "0">
+    <table width="799" height="200" border="0" align="center" cellpadding="5" cellspacing="0" class="bk">
+        <tr>
+            <td colspan="4"><img src="img/banner.jpg" width="799" height="120" /></td>
+        </tr>
         <tr>
             <td> Username </td>
             <td> <input type="text" name="user"  title="username"></td>
