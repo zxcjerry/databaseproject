@@ -33,11 +33,11 @@ if(mysqli_connect_errno()){
         <body>
 
         <form action="" method="post">
-            <table width="799" height="50" border="0" align="center" cellpadding="0" cellspacing="0" class="bk">
+            <table width="799" height="50" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td width="350" align="center"><span class="STYLE4"> Username</td>
+                    <td width="100" align="center"><span class="STYLE4"> Username</td>
                     <td> <input type="text" name="user"  title="username"></td>
-                    <td width="350" align="center"><span class="STYLE4"> Password</td>
+                    <td width="100" align="center"><span class="STYLE4"> Password</td>
                     <td> <input type="password" name="pass" title="password"></td>
                     <td> <input type="submit" name="login"  value="Login"></td>
                     <td> <input type="submit" name="reg"  value="Register"></td>

@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: jerry
- * Date: 11/26/17
- * Time: 10:14 PM
+ * Date: 11/27/17
+ * Time: 11:55 AM
  */
-include('login.php');
+    include('login.php');
 ?>
 
 <html>
-<title>Personal Center</title>
+<title>Details</title>
 
 <head>
     <style type="text/css">
@@ -38,15 +38,21 @@ include('login.php');
         <td width="160" align="center"><span class="STYLE3"><a href="account.php" target="_parent">Personal Center</a></span></td>
     </tr>
     <?php
-    session_start();
-
-    if(!isset($_SESSION['user'])){
+    if(!isset($_GET['pid'])){
         echo "<script>";
-        echo "alert('Please register or login first!');";
+        echo "alert('Wrong opening!');";
         echo "window.location = 'home.php';";
         echo "</script>";
     }
+    else{
+        $pid = $_GET['pid'];
+
+    }
+
     ?>
+    <tr>
+        <td colspan="4" align="center"> Still under construction for collecting Pokemon Data </td>
+    </tr>
 
 </table>
 </body>
