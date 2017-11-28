@@ -54,15 +54,15 @@
                         </td><br>
                     </tr>
                     <tr>
-                        <td width = "11%" algin = "left" class = "STYLE3">Number</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Name</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">HP</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Attack</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Defense</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Special Attack</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Special Defense</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Speed</td>
-                        <td width = "11%" algin = "left" class = "STYLE3">Details</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Number</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Name</td>
+                        <td width = "11%" align = "left" class = "STYLE3">HP</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Attack</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Defense</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Special Attack</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Special Defense</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Speed</td>
+                        <td width = "11%" align = "left" class = "STYLE3">Details</td>
                     </tr>
                     <?php
                     if(isset($_POST['search'])){
