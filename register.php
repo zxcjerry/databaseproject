@@ -23,7 +23,7 @@ if(mysqli_connect_errno()){
     <form action="" method="post">
     <table width="799" height="200" border="0" align="center" cellpadding="5" cellspacing="0" class="bk">
         <tr>
-            <td colspan="4"><img src="img/banner.jpg" width="799" height="120" /></td>
+            <td colspan="4"><img src="img/banner.jpg" width="799" height="140" /></td>
         </tr>
         <tr>
             <td> Username </td>

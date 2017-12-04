@@ -29,7 +29,7 @@
 <body>
 <table width="800" height="200" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
-        <td colspan="4"><img src="img/banner.jpg" width="799" height="120" /></td>
+        <td colspan="4"><img src="img/banner.jpg" width="799" height="140" /></td>
     </tr>
     <tr>
         <td width="160" align="center"><span class="STYLE3"><a href="home.php" target="_parent">Pokedex</a></span></td>
@@ -42,12 +42,21 @@
             <form id="myform" name="myform" method="post" action="">
                 <table width="90%" height="80" border="0" align="center" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td colspan = "2" align="left" class="STYLE1">Name or Number</td>
+                        <td colspan = "2" align="left" class="STYLE1">Number</td>
                         <td colspan = "4"><label>
-                                <input name="no_or_name" type="text" id="no_or_name" style="width:90%"/>
+                                <input name="number" type="text" id="number" style="width:90%"/>
                             </label></td>
                         <td align="left">
-                            <input type="submit" name="search" id="search" value="search" style="width:90%"/>
+                            <input type="submit" name="search1" id="search1" value="search" style="width:90%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan = "2" align="left" class="STYLE1">Name</td>
+                        <td colspan = "4"><label>
+                                <input name="name" type="text" id="name" style="width:90%"/>
+                            </label></td>
+                        <td align="left">
+                            <input type="submit" name="search2" id="search2" value="search" style="width:90%"/>
                         </td>
                         <td colspan = "2">
                             <input type="submit" name="surprise" id="surprise" value="surprise me" style="width:90%"/>
@@ -65,15 +74,20 @@
                         <td width = "11%" align = "left" class = "STYLE3">Details</td>
                     </tr>
                     <?php
-                    if(isset($_POST['search'])){
-                        $s = $_POST['no_or_name'];
-                        $query = "select * from Pokemon where PokemonID = $s or pname = '$s'";
+                    if(isset($_POST['search1'])){
+                        $s = $_POST['number'];
+                        $query = "select * from Pokemon where PokemonID = $s";
+                    }
+
+                    if(isset($_POST['search2'])){
+                        $n = "%{$_POST['name']}%";
+                        $query =  "select * from Pokemon where pname like '$n'";
                     }
 
                     if(isset($_POST['surprise'])){
-                        $first = rand(1,33);
-                        $second = rand(34,66);
-                        $third = rand(67,100);
+                        $first = rand(1,50);
+                        $second = rand(51,100);
+                        $third = rand(101,151);
                         $query = "select * from Pokemon where PokemonID = $first or PokemonID = $second or PokemonID = $third";
                     }
 
@@ -210,10 +224,12 @@
                         </td>
                     </tr>
                     <?php
-                    if(isset($_POST['typesearch'])){
-                        $type = $_POST['type'];
-                        $newquery = "select * from Pokemon where PokemonID in (select PokemonID from Hastype where TypeID = $type)";
+                    if(isset($_GET['type'])){
+                        $type = $_GET['type'];
                     }
+
+                    if(isset($_POST['typesearch']))
+                        $type = $_POST['type'];
 
                     if(isset($_POST['weaksearch'])){
                         $weak = $POST['weakness'];
@@ -224,6 +240,10 @@
                         $ability = $_POST['abilities'];
                         $newquery = "select * from Pokemon where PokemonID in (select PokemonID from Hasabilities where AbilitiesID = $ability)";
                     }
+
+                    if(isset($type))
+                        $newquery = "select * from Pokemon where PokemonID in (select PokemonID from Hastype where TypeID = $type)";
+
 
                     if(isset($newquery)){
                     ?>

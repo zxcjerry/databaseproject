@@ -31,7 +31,7 @@ include('login.php');
 <form id="myform" name="myform" method="post" action="">
 <table width="800" height="200" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
-        <td colspan="4"><img src="img/banner.jpg" width="799" height="120" /></td>
+        <td colspan="4"><img src="img/banner.jpg" width="799" height="140" /></td>
     </tr>
     <tr>
         <td width="160" align="center"><span class="STYLE3"><a href="home.php" target="_parent">Pokedex</a></span></td>
