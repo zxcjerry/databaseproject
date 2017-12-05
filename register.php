@@ -79,7 +79,7 @@ if(mysqli_connect_errno()){
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);
                 $id = $row['m'] + 1;
-                $sql = "insert into Trainers (TrainerID, Trainername, Money, Acc, Pword) value ($id, '$full',0, '$user', '$pass_1')";
+                $sql = "insert into Trainers (TrainerID, Trainername, Money, Acc, Pword) value ($id, '$full',5000, '$user', '$pass_1')";
                 if(mysqli_query($conn, $sql)){
                     echo "<script> alert('Create account successfully'); </script>";
                     echo "<script> window.location = 'home.php';</script>";
