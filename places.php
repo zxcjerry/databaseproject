@@ -104,12 +104,21 @@ include('login.php');
     <?php
         if(isset($_POST['explore'])){
             $rand = rand(1,10);
-            if($rand < 6)
+            if($rand < 6){
                 $nextpic = "img/Pokemon/{$iid[0]}.png";
-            else if(rand < 9)
+                $PokemonID = $iid[0];
+                $successrate = 30;
+            }
+            else if(rand < 9){
                 $nextpic = "img/Pokemon/{$iid[1]}.png";
-            else if(rand < 10)
+                $PokemonID = $iid[1];
+                $successrate = 10;
+            }
+            else if(rand < 10){
                 $nextpic = "img/Pokemon/{$iid[2]}.png";
+                $PokemonID = $iid[2];
+                $successrate = 5;
+            }
             else{
                 echo "<script>";
                 echo "alert('You found $10! Nice job!');";
@@ -120,16 +129,134 @@ include('login.php');
         }
 
         if(isset($nextpic)){
+            $query3 = "select * from Haspokeballs where TrainerID = $tid";
+            $result3 = mysqli_query($conn, $query3);
+            $ballnum = mysqli_num_rows($result3);
     ?>
 
     <tr>
         <td colspan="2" align="center"><img src='<?php echo $nextpic; ?>' width="240" height="240"></td>
-        <td><input type="submit" name="catch"  value="catch" style="width:60%"></td>
+        <td colspan="2" valign="top">
+            <table width="300" height="240" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="33%" height="30" align="left" class="STYLE6"> Balls </td>
+                    <td width="33%" height="30" align="left" class="STYLE6"> Quantities </td>
+                    <td width="33%" height="30" align="center" class="STYLE6"> &nbsp; </td>
+                </tr>
+                <?php
+                if($ballnum == 0){
+                ?>
+                <tr>
+                    <td colspan="3" align="center" class="STYLE4"> You don't have any balls, <a href="shop.php">go buy some !</a></td>
+                </tr>
+                <?php
+                }
+                else{
+                    while($row2 = mysqli_fetch_assoc($result3)){
+                        $ballid = $row2['Ballid'];
+                        $ballpic = "img/Pokeballs/{$row2['Ballid']}.png";
+                ?>
+                <tr>
+                    <td><img src="<?php echo $ballpic; ?>" width="32" height="32" align="center"></td>
+                    <td align="left" class="STYLE4"><?php echo $row2['Quantities']; ?></td>
+                    <td><input type="submit" name="<?php echo $ballid; ?>" value="catch"></td>
+                </tr>
+                <tr class="blank_row">
+                    <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+                </tr>
+                <?php
+                    }
+                }
+                ?>
+            </table>
+        </td>
     </tr>
-
     <?php
         }
+
+        if(isset($_POST['1']))
+            $useid = 1;
+
+        if(isset($_POST['2'])){
+            $useid = 2;
+            $successrate = $successrate * 1.5;
+        }
+
+        if(isset($_POST['3'])){
+            $useid = 3;
+            $successrate = $successrate * 2;
+        }
+
+        if(isset($_POST['4'])){
+            $useid = 4;
+            $successrate = 1;
+        }
+
+        if(isset($_POST['5']))
+            $useid = 5;
+
+        if(isset($_POST['6']))
+            $useid = 6;
+
+        if(isset($_POST['7']))
+            $useid = 7;
+
+        if(isset($_POST['8']))
+            $useid = 8;
+
+        if(isset($_POST['9']))
+            $useid = 9;
+
+        if(isset($_POST['10']))
+            $useid = 10;
+
+        if(isset($_POST['11']))
+            $useid = 11;
+
+        if(isset($_POST['12']))
+            $useid = 12;
+
+        if(isset($_POST['13']))
+            $useid = 13;
+
+        if(isset($useid)){
+            $query4 = "select Quantities from Haspokeballs where TrainerID = $tid and Ballid = $useid";
+            $result4 = mysqli_query($conn, $query4);
+            $row4 = mysqli_fetch_assoc($result4);
+            $current = (int)$row4['Quantities'];
+            $current = $current - 1;
+            if($current == 0)
+                $query5 = "delete from Haspokeballs where TrainerID = $tid and Ballid = $useid";
+            else
+                $query5 = "update Haspokeballs set Quantities = $current where TrainerID = $tid and Ballid = $useid";
+
+            mysqli_query($conn, $query5);
+
+            $success = rand(1, 100);
+            if($successrate > $success){
+                $query6 = "insert into Owns (TrainerID, PokemonID) value($tid, $PokemonID)";
+                mysqli_query($query6);
+                echo "<script>";
+                echo "alert('Congratulations! You have caught it.');";
+                echo "window.location = 'adventure.php';";
+                echo "</script>";
+            }
+            else{
+                echo "<script>";
+                echo "alert('Sorry, Pokemon escaped and ran away!');";
+                echo "window.location = 'adventure.php';";
+                echo "</script>";
+            }
+        }
     ?>
+
+
+    <tr class="blank_row">
+        <td bgcolor="#FFFFFF" colspan="4">&nbsp;</td>
+    </tr>
+    <tr class="blank_row">
+        <td bgcolor="#FFFFFF" colspan="4">&nbsp;</td>
+    </tr>
 </table>
 </form>
 </body>
